@@ -1,13 +1,15 @@
-FlowMusic v0.2 — GitHub Pages frontend
+FlowMusic v0.3 — iPhone-first Liquid Glass
 
-Upload deze bestanden los in de hoofdmap van je repository:
-- index.html
-- style.css
-- app.js
-- default-cover.svg
-- 404.html
+Upload LOS in de hoofdmap van GitHub:
+index.html
+style.css
+app.js
+app-icon.svg
+default-cover.svg
+manifest.json
+service-worker.js
+404.html
 
-GitHub Pages:
-Settings > Pages > Deploy from a branch > main > /(root)
-
-De echte muziekbibliotheek komt later van je laptopserver via /api/songs.
+GitHub Pages blijft op main / (root).
+Op iPhone: open de site in Safari > Deel > Zet op beginscherm.
+De server en 320 GB HDD koppelen we daarna.
