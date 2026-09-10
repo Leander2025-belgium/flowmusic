@@ -3,68 +3,167 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#101114" />
+  <meta name="theme-color" content="#0a0b0f" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <title>FlowMusic</title>
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-  <div class="app-shell">
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+
+  <div class="app">
     <aside class="sidebar glass">
       <div class="brand">
-        <div class="brand-mark">F</div>
-        <div>
-          <h1>FlowMusic</h1>
-          <p>Jouw muziek. Jouw server.</p>
+        <div class="brand-logo">
+          <span class="wave w1"></span><span class="wave w2"></span><span class="wave w3"></span>
+        </div>
+        <div class="brand-copy">
+          <strong>FlowMusic</strong>
+          <span>Private streaming</span>
         </div>
       </div>
 
-      <nav>
-        <button class="nav-item active" data-view="home">⌂ <span>Home</span></button>
-        <button class="nav-item" data-view="library">♫ <span>Bibliotheek</span></button>
-        <button class="nav-item" data-view="favorites">♥ <span>Favorieten</span></button>
+      <nav class="nav">
+        <button class="nav-item active" data-view="home">
+          <span class="nav-icon">⌂</span><span>Home</span>
+        </button>
+        <button class="nav-item" data-view="library">
+          <span class="nav-icon">♫</span><span>Bibliotheek</span>
+        </button>
+        <button class="nav-item" data-view="favorites">
+          <span class="nav-icon">♥</span><span>Favorieten</span>
+        </button>
       </nav>
 
-      <div class="sidebar-footer">
-        <span id="songCount">0 nummers</span>
-        <span>FlowMusic v0.1</span>
+      <div class="sidebar-section">
+        <span class="side-label">JOUW MUZIEK</span>
+        <button class="side-link"><span>＋</span> Nieuwe playlist</button>
+        <button class="side-link"><span>◷</span> Recent afgespeeld</button>
+      </div>
+
+      <div class="storage-card">
+        <div class="storage-top">
+          <span>Serveropslag</span>
+          <strong>320 GB</strong>
+        </div>
+        <div class="storage-bar"><i></i></div>
+        <small>Je persoonlijke muziekserver</small>
+      </div>
+
+      <div class="sidebar-bottom">
+        <span class="online-dot"></span>
+        <div>
+          <strong>FlowMusic Server</strong>
+          <span id="serverStatus">Interface klaar</span>
+        </div>
       </div>
     </aside>
 
-    <main class="main-content">
-      <header class="topbar glass">
-        <div class="search-wrap">
-          <span>⌕</span>
-          <input id="searchInput" type="search" placeholder="Zoek op titel, artiest of album…" autocomplete="off" />
+    <main class="main">
+      <header class="topbar">
+        <div class="history-controls">
+          <button class="circle-btn">‹</button>
+          <button class="circle-btn">›</button>
         </div>
-        <div class="status-pill"><span class="online-dot"></span> Server online</div>
+
+        <label class="search glass">
+          <span class="search-icon">⌕</span>
+          <input id="searchInput" type="search" placeholder="Zoek nummers, artiesten of albums" autocomplete="off" />
+          <kbd>⌘ K</kbd>
+        </label>
+
+        <div class="top-actions">
+          <button class="circle-btn">⋯</button>
+          <div class="avatar">L</div>
+        </div>
       </header>
 
       <section class="hero glass">
-        <div>
-          <span class="eyebrow">FLOWMUSIC</span>
-          <h2>Welkom bij je eigen muziekserver.</h2>
-          <p>Geen abonnement. Gewoon jouw eigen bibliotheek, rechtstreeks vanaf je laptopserver.</p>
+        <div class="hero-content">
+          <span class="pill">JOUW EIGEN STREAMINGDIENST</span>
+          <h1>Alles wat je graag hoort.<br><em>Van jou.</em></h1>
+          <p>Stream je eigen muziekbibliotheek vanaf je persoonlijke server, zonder abonnement.</p>
+          <div class="hero-actions">
+            <button id="playAllBtn" class="primary">▶ Alles afspelen</button>
+            <button class="secondary">Open bibliotheek</button>
+          </div>
         </div>
-        <button id="playAllBtn" class="primary-btn">▶ Alles afspelen</button>
+
+        <div class="hero-art">
+          <div class="vinyl">
+            <div class="vinyl-ring r1"></div>
+            <div class="vinyl-ring r2"></div>
+            <div class="vinyl-ring r3"></div>
+            <div class="vinyl-label">
+              <span>FLOW</span>
+              <small>MUSIC</small>
+            </div>
+          </div>
+          <div class="floating-card fc1">♪</div>
+          <div class="floating-card fc2">♫</div>
+        </div>
       </section>
 
-      <section class="content-section">
-        <div class="section-head">
+      <section class="section">
+        <div class="section-header">
           <div>
-            <span class="eyebrow">BIBLIOTHEEK</span>
-            <h3 id="sectionTitle">Alle nummers</h3>
+            <span class="eyebrow">VOOR JOU</span>
+            <h2>Start met luisteren</h2>
           </div>
-          <select id="sortSelect" class="glass-control">
-            <option value="title">Titel</option>
-            <option value="artist">Artiest</option>
-            <option value="album">Album</option>
-          </select>
+          <button class="text-button">Bekijk alles →</button>
         </div>
 
-        <div id="emptyState" class="empty-state glass hidden">
-          <div class="empty-icon">♫</div>
-          <h3>Nog geen muziek gevonden</h3>
-          <p>Zet MP3-, FLAC-, M4A-, AAC-, OGG- of WAV-bestanden in de ingestelde muziekmap en herlaad deze pagina.</p>
+        <div class="mix-grid">
+          <button class="mix-card mix-1" data-mix="favorites">
+            <div class="mix-art"><span>♥</span></div>
+            <strong>Favorieten</strong>
+            <small>Alles waar je van houdt</small>
+          </button>
+          <button class="mix-card mix-2" data-mix="library">
+            <div class="mix-art"><span>∞</span></div>
+            <strong>Flow Mix</strong>
+            <small>Shuffle je hele collectie</small>
+          </button>
+          <button class="mix-card mix-3" data-mix="recent">
+            <div class="mix-art"><span>◷</span></div>
+            <strong>Recent</strong>
+            <small>Ga verder waar je stopte</small>
+          </button>
+          <button class="mix-card mix-4" data-mix="library">
+            <div class="mix-art"><span>✦</span></div>
+            <strong>Ontdekken</strong>
+            <small>Herontdek je bibliotheek</small>
+          </button>
+        </div>
+      </section>
+
+      <section class="section library-section">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">BIBLIOTHEEK</span>
+            <h2 id="sectionTitle">Alle nummers</h2>
+          </div>
+          <div class="library-actions">
+            <span id="songCount">0 nummers</span>
+            <select id="sortSelect" class="select-control">
+              <option value="title">Titel</option>
+              <option value="artist">Artiest</option>
+              <option value="album">Album</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="emptyState" class="empty-state glass">
+          <div class="empty-orbit">
+            <div class="empty-disc">♫</div>
+          </div>
+          <h3>FlowMusic staat klaar</h3>
+          <p>Je interface werkt. Zodra je laptopserver gekoppeld is, verschijnen je eigen nummers hier automatisch.</p>
+          <div class="empty-tags">
+            <span>MP3</span><span>FLAC</span><span>AAC</span><span>M4A</span>
+          </div>
         </div>
 
         <div id="songList" class="song-list"></div>
@@ -72,38 +171,38 @@
     </main>
   </div>
 
-  <footer class="player glass" id="player">
+  <footer class="player glass">
     <div class="now-playing">
-      <div class="cover-wrap">
-        <img id="cover" src="./default-cover.svg" alt="Albumcover" />
+      <div class="cover-shell">
+        <img id="cover" src="./default-cover.svg" alt="Albumcover">
       </div>
-      <div class="track-meta">
+      <div class="track-copy">
         <strong id="songTitle">Geen nummer geselecteerd</strong>
         <span id="artist">FlowMusic</span>
       </div>
-      <button id="favoriteBtn" class="icon-btn" aria-label="Favoriet">♡</button>
+      <button id="favoriteBtn" class="player-icon">♡</button>
     </div>
 
-    <div class="player-center">
-      <div class="controls">
-        <button id="shuffleBtn" class="icon-btn small" aria-label="Shuffle">⤨</button>
-        <button id="previousBtn" class="icon-btn" aria-label="Vorige">⏮</button>
-        <button id="playBtn" class="play-btn" aria-label="Afspelen">▶</button>
-        <button id="nextBtn" class="icon-btn" aria-label="Volgende">⏭</button>
-        <button id="repeatBtn" class="icon-btn small" aria-label="Herhalen">↻</button>
+    <div class="player-main">
+      <div class="player-controls">
+        <button id="shuffleBtn" class="player-icon small">⤨</button>
+        <button id="previousBtn" class="player-icon">⏮</button>
+        <button id="playBtn" class="play-button">▶</button>
+        <button id="nextBtn" class="player-icon">⏭</button>
+        <button id="repeatBtn" class="player-icon small">↻</button>
       </div>
-      <div class="progress-row">
+      <div class="timeline">
         <span id="currentTime">0:00</span>
-        <input id="progress" type="range" min="0" max="100" value="0" step="0.1" />
+        <input id="progress" type="range" min="0" max="100" value="0" step="0.1">
         <span id="duration">0:00</span>
       </div>
     </div>
 
-    <div class="volume-wrap">
+    <div class="player-right">
+      <button class="player-icon small">☷</button>
       <span>🔊</span>
-      <input id="volume" type="range" min="0" max="1" value="0.85" step="0.01" />
+      <input id="volume" type="range" min="0" max="1" value="0.85" step="0.01">
     </div>
-
     <audio id="audio" preload="metadata"></audio>
   </footer>
 
