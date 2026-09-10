@@ -70,16 +70,18 @@ function toggleFavorite(song) {
 
 async function loadLibrary() {
   try {
-    const response = await fetch("/api/songs");
+    const response = await fetch("./api/songs");
     if (!response.ok) throw new Error("Kon bibliotheek niet ophalen");
     songs = await response.json();
     songCount.textContent = `${songs.length} ${songs.length === 1 ? "nummer" : "nummers"}`;
     applyFilters();
   } catch (error) {
-    console.error(error);
+    console.warn("Geen FlowMusic API gevonden. GitHub Pages toont alleen de interface.", error);
+    songs = [];
+    songCount.textContent = "0 nummers";
     emptyState.classList.remove("hidden");
-    emptyState.querySelector("h3").textContent = "Server niet bereikbaar";
-    emptyState.querySelector("p").textContent = "Controleer of server.js draait en herlaad daarna de pagina.";
+    emptyState.querySelector("h3").textContent = "FlowMusic staat klaar";
+    emptyState.querySelector("p").textContent = "De interface werkt. Voor muziek vanaf je 320 GB HDD verbind je deze frontend later met de laptopserver.";
   }
 }
 
@@ -114,7 +116,7 @@ function renderSongs() {
     row.innerHTML = `
       <div class="row-index">${index + 1}</div>
       <div class="song-main">
-        <img class="song-thumb" src="${song.cover || "/covers/default-cover.svg"}" alt="">
+        <img class="song-thumb" src="${song.cover || "./default-cover.svg"}" alt="">
         <div class="song-text">
           <strong>${escapeHtml(song.title || "Onbekende titel")}</strong>
           <span>${escapeHtml(song.artist || "Onbekende artiest")}</span>
@@ -145,7 +147,7 @@ function playSong(song) {
   audio.play().catch(console.error);
   songTitle.textContent = song.title || "Onbekende titel";
   artist.textContent = song.artist || "Onbekende artiest";
-  cover.src = song.cover || "/covers/default-cover.svg";
+  cover.src = song.cover || "./default-cover.svg";
   playBtn.textContent = "⏸";
   updateFavoriteButton();
   renderSongs();

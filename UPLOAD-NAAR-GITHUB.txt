@@ -1,0 +1,13 @@
+Upload deze bestanden LOS in de hoofdmap van je GitHub-repository:
+
+index.html
+style.css
+app.js
+default-cover.svg
+404.html
+
+Gebruik daarna GitHub Pages via:
+Settings > Pages > Deploy from a branch > main > /(root)
+
+Let op: GitHub Pages kan niet rechtstreeks je 320 GB HDD lezen.
+Daarvoor draait server.js later op je laptopserver.
